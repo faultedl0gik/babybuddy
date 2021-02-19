@@ -190,12 +190,6 @@ Python 3.6+, nginx, uwsgi and sqlite and should be sufficient for a few users
 
         pipenv install --three
         pipenv shell
-        
-    **Note:** Python dependencies are locked on x86-64 architecture. Installs 
-    on other architectures (like Raspberry Pi's ARM) may result in a 
-    ``THESE PACKAGES DO NOT MATCH THE HASHES FROM Pipfile.lock!`` error. Add 
-    the ``--skip-lock`` flag to the above command to suppress this error 
-    (i.e.: ``pipenv install --three --dev --skip-lock``).
 
 1. Create a production settings file and set the ``SECRET_KEY`` and ``ALLOWED_HOSTS`` values
 
@@ -289,6 +283,12 @@ take precedence over the contents of an `.env` file.**
 - [`DEBUG`](#debug)
 - [`NAP_START_MAX`](#nap_start_max)
 - [`NAP_START_MIN`](#nap_start_min)
+- [`DB_ENGINE`](#db_engine)
+- [`DB_HOST`](#db_host)
+- ['DB_NAME'](#db_name)
+- [`DB_PASSWORD`](#db_password)
+- [`DB_PORT`](#db_port)
+- [`DB_USER`](#db_user)
 - [`SECRET_KEY`](#secret_key)
 - [`TIME_ZONE`](#time_zone)
 - [`USE_24_HOUR_TIME_FORMAT`](#use_24_hour_time_format)
@@ -359,6 +359,44 @@ entry is consider a nap. Expects the 24-hour format %H:%M.
 
 The minimum *start* time (in the instance's time zone) after which a sleep
 entry is considered a nap. Expects the 24-hour format %H:%M.
+
+### 'DB_ENGINE'
+
+*Default: django.db.backends.postgresql*
+
+The database engine utilized for the deployment.
+
+See also [Django's documentation on the ENGINE setting](https://docs.djangoproject.com/en/3.0/ref/settings/#engine) .
+
+### 'DB_HOST'
+
+*Default: db*
+
+The name of the database host for the deployment.
+
+### 'DB_NAME'
+
+*Default: postgres*
+
+The name of the database table utilized for the deployment.
+
+### 'DB_PASSWORD'
+
+*No Default*
+
+The password for the database user for the deployment. In the default example, this is the root PostgreSQL password.
+
+### 'DB_PORT'
+
+*Default: 5432*
+
+The listening port for the database. The default port is 5432 for PostgreSQL.
+
+### 'DB_USER'
+
+*Default: postgres*
+
+The database username utilized for the deployment.
 
 ### `SECRET_KEY`
 
